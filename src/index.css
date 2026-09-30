@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.font-serif-magic {
+  font-family: 'Cinzel', Georgia, serif;
+}
+
+.font-mono-code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.45);
+}
+
+/* Haori pattern effect for Demon Hunter */
+.haori-pattern {
+  background-color: #0d1a10;
+  background-image: 
+    linear-gradient(45deg, #163821 25%, transparent 25%), 
+    linear-gradient(-45deg, #163821 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #163821 75%), 
+    linear-gradient(-45deg, transparent 75%, #163821 75%);
+  background-size: 32px 32px;
+  background-position: 0 0, 0 16px, 16px -16px, -16px 0px;
+}
+
+/* Wizard parchment pattern */
+.parchment-pattern {
+  background-color: #f7f3e8;
+  background-image: radial-gradient(#e4d7bf 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+

@@ -1,0 +1,21 @@
+{
+  "name": "Magic Journal - Digital Journal Anak & Remaja",
+  "short_name": "MagicJournal",
+  "description": "Aplikasi digital journal interaktif untuk anak dan remaja dengan enkripsi client-side AES-256, tema dinamis Wizard Academy & Demon Hunter, serta Parent Portal aman.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#0f172a",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "lifestyle", "productivity"],
+  "lang": "id"
+}

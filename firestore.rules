@@ -1,0 +1,87 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Connection probe test document
+    match /test/{docId} {
+      allow get: if isValidId(docId);
+      allow list: if true;
+      allow write: if false;
+    }
+
+    // User profiles
+    match /users/{userId} {
+      allow get: if isValidId(userId);
+      allow list: if true;
+      allow create, update: if isValidId(userId);
+      allow delete: if isValidId(userId);
+    }
+
+    // Encrypted journals
+    match /journals/{journalId} {
+      allow get: if isValidId(journalId);
+      allow list: if true;
+      allow create, update: if isValidId(journalId);
+      allow delete: if isValidId(journalId);
+    }
+
+    // Pages explicitly shared by children with parents
+    match /parentShares/{shareId} {
+      allow get: if isValidId(shareId);
+      allow list: if true;
+      allow create, update: if isValidId(shareId);
+      allow delete: if isValidId(shareId);
+    }
+
+    // Friend collaborative quests & shared journal spreads
+    match /collaborations/{collabId} {
+      allow get: if isValidId(collabId);
+      allow list: if true;
+      allow create, update: if isValidId(collabId);
+      allow delete: if isValidId(collabId);
+    }
+
+    // Activity logs
+    match /activityLogs/{logId} {
+      allow get: if isValidId(logId);
+      allow list: if true;
+      allow create: if isValidId(logId);
+      allow update, delete: if isValidId(logId);
+    }
+
+    // System configuration (Super Admin)
+    match /systemConfig/{configId} {
+      allow get: if isValidId(configId);
+      allow list: if true;
+      allow create, update: if isValidId(configId);
+      allow delete: if false;
+    }
+
+    // Custom reflection prompts (Super Admin CMS)
+    match /customPrompts/{promptId} {
+      allow get: if isValidId(promptId);
+      allow list: if true;
+      allow create, update, delete: if isValidId(promptId);
+    }
+  }
+}

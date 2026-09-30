@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Magic Journal - Digital Journal Anak & Remaja Terenkripsi</title>
+    <meta name="description" content="Aplikasi digital journal interaktif untuk anak dan remaja dengan enkripsi client-side AES-256, tema dinamis Wizard Academy & Demon Hunter, serta Parent Portal aman." />
+    
+    <!-- PWA & Mobile Web App Meta -->
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Magic Journal" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Magic Journal" />
+    <meta property="og:title" content="Magic Journal - Digital Journal Anak & Remaja Terenkripsi" />
+    <meta property="og:description" content="Aplikasi digital journal interaktif untuk anak dan remaja dengan enkripsi client-side AES-256, tema dinamis Wizard Academy & Demon Hunter, serta Parent Portal aman." />
+    <meta property="og:image" content="/favicon.svg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Magic Journal - Digital Journal Anak & Remaja Terenkripsi" />
+    <meta name="twitter:description" content="Aplikasi digital journal interaktif untuk anak dan remaja dengan enkripsi client-side AES-256, tema dinamis Wizard Academy & Demon Hunter, serta Parent Portal aman." />
+    <meta name="twitter:image" content="/favicon.svg" />
+
+    <!-- Google Fonts Preconnect & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <!-- Structured Data (JSON-LD) for Production SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Magic Journal",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "description": "Aplikasi digital journal interaktif untuk anak dan remaja dengan enkripsi client-side AES-256, tema dinamis Wizard Academy & Demon Hunter, serta Parent Portal aman.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+  </head>
+  <body class="bg-neutral-900 text-neutral-100 antialiased selection:bg-amber-500 selection:text-black min-h-screen">
+    <noscript>
+      <div style="padding: 24px; text-align: center; color: #f59e0b; background: #18181b; font-family: sans-serif;">
+        <h2>JavaScript Diperlukan</h2>
+        <p>Aplikasi Magic Journal membutuhkan JavaScript aktif untuk menjalankan enkripsi privasi lokal AES-256.</p>
+      </div>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

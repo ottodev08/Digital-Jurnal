@@ -1,0 +1,180 @@
+{
+  "entities": {
+    "user": {
+      "title": "User Profile",
+      "description": "User account profile for child, parent, or super_admin in Magic Journal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 100 },
+        "email": { "type": "string", "maxLength": 150 },
+        "passwordHash": { "type": "string", "maxLength": 255 },
+        "role": { "type": "string", "enum": ["child", "parent", "super_admin"] },
+        "age": { "type": "number" },
+        "theme": { "type": "string", "enum": ["wizard_academy", "demon_hunter"] },
+        "avatar": { "type": "string", "maxLength": 500 },
+        "streakCount": { "type": "number" },
+        "xp": { "type": "number" },
+        "level": { "type": "number" },
+        "pairingCode": { "type": "string", "maxLength": 32 },
+        "parentEmail": { "type": "string", "maxLength": 150 },
+        "pairedChildrenIds": { "type": "array" },
+        "friendIds": { "type": "array" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "email", "role", "theme"]
+    },
+    "journal": {
+      "title": "Encrypted Journal Entry",
+      "description": "Client-side encrypted journal entry recorded by child/teen",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "userName": { "type": "string", "maxLength": 100 },
+        "themeUsed": { "type": "string", "enum": ["wizard_academy", "demon_hunter"] },
+        "moodScore": { "type": "number" },
+        "moodLabel": { "type": "string", "maxLength": 100 },
+        "promptQuestion": { "type": "string", "maxLength": 500 },
+        "ciphertext": { "type": "string", "maxLength": 500000 },
+        "iv": { "type": "string", "maxLength": 128 },
+        "salt": { "type": "string", "maxLength": 128 },
+        "algo": { "type": "string", "maxLength": 64 },
+        "doodleDataUrl": { "type": "string", "maxLength": 500000 },
+        "sticker": { "type": "string", "maxLength": 32 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "moodScore", "ciphertext", "iv", "salt", "createdAt"]
+    },
+    "parentShare": {
+      "title": "Parent Shared Journal Page",
+      "description": "Explicitly shared journal reflections and notes from child to parent",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "journalId": { "type": "string", "maxLength": 128 },
+        "childId": { "type": "string", "maxLength": 128 },
+        "childName": { "type": "string", "maxLength": 100 },
+        "parentEmail": { "type": "string", "maxLength": 150 },
+        "moodScore": { "type": "number" },
+        "moodLabel": { "type": "string", "maxLength": 100 },
+        "promptQuestion": { "type": "string", "maxLength": 500 },
+        "sharedContent": { "type": "string", "maxLength": 50000 },
+        "doodleDataUrl": { "type": "string", "maxLength": 500000 },
+        "sticker": { "type": "string", "maxLength": 32 },
+        "childNote": { "type": "string", "maxLength": 1000 },
+        "parentReaction": { "type": "string", "maxLength": 100 },
+        "parentReply": { "type": "string", "maxLength": 1000 },
+        "parentRepliedAt": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "childId", "sharedContent", "createdAt"]
+    },
+    "friendCollaboration": {
+      "title": "Friend Collaborative Journal Page",
+      "description": "Co-op journal quest page authored jointly by friends",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 150 },
+        "prompt": { "type": "string", "maxLength": 500 },
+        "theme": { "type": "string", "enum": ["wizard_academy", "demon_hunter"] },
+        "author1Id": { "type": "string", "maxLength": 128 },
+        "author1Name": { "type": "string", "maxLength": 100 },
+        "author1Avatar": { "type": "string", "maxLength": 500 },
+        "author1Text": { "type": "string", "maxLength": 10000 },
+        "author1Doodle": { "type": "string", "maxLength": 500000 },
+        "author1Sticker": { "type": "string", "maxLength": 32 },
+        "author2Id": { "type": "string", "maxLength": 128 },
+        "author2Name": { "type": "string", "maxLength": 100 },
+        "author2Avatar": { "type": "string", "maxLength": 500 },
+        "author2Text": { "type": "string", "maxLength": 10000 },
+        "author2Doodle": { "type": "string", "maxLength": 500000 },
+        "author2Sticker": { "type": "string", "maxLength": 32 },
+        "status": { "type": "string", "enum": ["in_progress", "completed"] },
+        "cheersCount": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "author1Id", "author2Id", "status", "createdAt"]
+    },
+    "activityLog": {
+      "title": "Activity Audit Log",
+      "description": "Audit and security events log",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "timestamp": { "type": "string" },
+        "userId": { "type": "string", "maxLength": 128 },
+        "userName": { "type": "string", "maxLength": 100 },
+        "role": { "type": "string", "maxLength": 32 },
+        "action": { "type": "string", "maxLength": 100 },
+        "details": { "type": "string", "maxLength": 1000 },
+        "ip": { "type": "string", "maxLength": 64 },
+        "severity": { "type": "string", "enum": ["info", "security", "warning", "alert"] }
+      },
+      "required": ["id", "timestamp", "userId", "action", "details"]
+    },
+    "systemConfig": {
+      "title": "System Gamification & Security Configuration",
+      "description": "Global platform configuration managed by Super Admin",
+      "type": "object",
+      "properties": {
+        "xpPerJournal": { "type": "number" },
+        "xpPerParentShare": { "type": "number" },
+        "xpPerCollab": { "type": "number" },
+        "lowMoodAlertDays": { "type": "number" },
+        "maintenanceMode": { "type": "boolean" },
+        "allowRegistration": { "type": "boolean" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["xpPerJournal", "xpPerParentShare", "xpPerCollab", "lowMoodAlertDays"]
+    },
+    "customPrompt": {
+      "title": "Custom Reflection Prompt",
+      "description": "Dynamic daily reflection prompt created by Super Admin",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "theme": { "type": "string", "enum": ["wizard_academy", "demon_hunter"] },
+        "textId": { "type": "string", "maxLength": 500 },
+        "textEn": { "type": "string", "maxLength": 500 },
+        "textJa": { "type": "string", "maxLength": 500 },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "theme", "textId", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "#/entities/user",
+      "description": "Store registered user profiles and settings"
+    },
+    "/journals/{journalId}": {
+      "schema": "#/entities/journal",
+      "description": "Store encrypted journal entries"
+    },
+    "/parentShares/{shareId}": {
+      "schema": "#/entities/parentShare",
+      "description": "Store explicitly shared pages and parent feedback"
+    },
+    "/collaborations/{collabId}": {
+      "schema": "#/entities/friendCollaboration",
+      "description": "Store collaborative journal quest pages between friends"
+    },
+    "/activityLogs/{logId}": {
+      "schema": "#/entities/activityLog",
+      "description": "Store security audit logs"
+    },
+    "/systemConfig/{configId}": {
+      "schema": "#/entities/systemConfig",
+      "description": "Store global system and gamification settings"
+    },
+    "/customPrompts/{promptId}": {
+      "schema": "#/entities/customPrompt",
+      "description": "Store Super Admin custom reflection prompts"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Magic Journal",
+  "description": "Aplikasi digital journal interaktif untuk anak dan remaja dengan enkripsi client-side AES-256, tema dinamis Wizard Academy & Demon Hunter, serta Parent Portal aman.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
